@@ -1,24 +1,29 @@
 import React from 'react'
-import Header from './Components/Header'
-import Home from './Components/Home'
-import About from './Components/About'
-import Service from './Components/Service'
-import Product from './Components/Product'
-import Stories from './Components Stories'
-import Contact from './Components/Contact'
-import Footer from './Components/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './Components/Header/Header'
+import Home from './Components/Home/Home'
+import About from './Components/About/About'
+import Service from './Components/Services/Service'
+import Product from './Components/Product/Product'
+import Stories from './Components/Stories/Stories'
+import Contact from './Components/Contact/Contact'
+import Footer from './Components/Footer/Footer'
 
 const App = () => {
   return (
     <div>
-      <Header />
-      <Home />
-      <About />
-      <Service />
-      <Product />
-      <Stories />
-      <Contact />
-      <Footer />
+      <Router>
+        <Header />
+        <Routes>    
+          <Route exact path='/' element={<Home/>} />
+          <Route exact path='/about' element={<About/>} />
+          <Route exact path='/service' element={<Service/>} />
+          <Route exact path='/product' element={<Product/>} />
+          <Route exact path='/stories' element={<Stories/>} />
+          <Route exact path='/contact' element={<Contact/>} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   )
 }
