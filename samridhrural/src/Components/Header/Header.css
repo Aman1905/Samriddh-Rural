@@ -1,12 +1,14 @@
 .navbar__main {
-    position: fixed;
+    position: sticky;
+    top: 0;
     box-shadow: 2px 0px 11px -2px rgba(0, 0, 0, 0.2);
 }
 
 .navbar__list {
+    color: black;
     text-decoration: none;
 }
 
-a:hover {
+.navbar__list:hover {
     color: #1f71c3 !important;
 }

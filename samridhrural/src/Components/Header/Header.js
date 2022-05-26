@@ -1,5 +1,7 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
+import Offcanvas from 'react-bootstrap/Offcanvas'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import './Header.css'
@@ -7,20 +9,28 @@ import './Header.css'
 const Header = () => {
   return (
     <>
-    <Navbar className="navbar__main" expand="lg">
-      <Container className="navbar__items">
-        <Navbar.Brand>Samriddh Rural</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <a href="../Home/Home" className='navbar__list'><Nav.Link className="active">Home</Nav.Link></a>
-            <a href="../About/About" className='navbar__list'><Nav.Link className="active">About Us</Nav.Link></a>
-            <a href="../Services/Service" className='navbar__list'><Nav.Link className="active">Services</Nav.Link></a>
-            <a href="../Contact/Contact" className='navbar__list'><Nav.Link className="active">Contact</Nav.Link></a>
-          </Nav>
-        </Navbar.Collapse>
+  {['lg'].map((expand) => (
+    <Navbar key={expand} expand={expand} className="navbar__main mb-3">
+      <Container>
+        <Navbar.Brand className="justify-content-end flex-grow-1 pe-5" >Samriddh Rural</Navbar.Brand>
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar.Offcanvas
+          id={`offcanvasNavbar-expand-${expand}`}
+          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+          placement="end"
+        >
+          <Offcanvas.Body>
+            <Nav className="justify-content-end flex-grow-1 pe-5">
+              <NavLink className="navbar__list pe-4" to='/'>Home</NavLink>
+              <NavLink className="navbar__list pe-4" to='/about'>About Us</NavLink>
+              <NavLink className="navbar__list pe-4" to='/service'>Services</NavLink>
+              <NavLink className="navbar__list pe-4" to='/contact'>Contact</NavLink>
+            </Nav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
       </Container>
     </Navbar>
+  ))}
     </>
   )
 }

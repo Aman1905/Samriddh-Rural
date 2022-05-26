@@ -1,5 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle"
+import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
 import About from './Components/About/About'
